@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>get_data (Checker)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/tweet_checker.rb, line 28</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_data</span>(<span class="ruby-identifier">request_url</span>, <span class="ruby-identifier">auth</span> = <span class="ruby-keyword kw">false</span>)
+    <span class="ruby-identifier">base_url</span> = <span class="ruby-value str">'http://api.twitter.com/1/statuses/'</span>
+     <span class="ruby-keyword kw">begin</span>
+      <span class="ruby-identifier">timeout</span>(<span class="ruby-value">5</span>) <span class="ruby-keyword kw">do</span>
+        <span class="ruby-keyword kw">if</span> (<span class="ruby-identifier">auth</span> <span class="ruby-operator">==</span> <span class="ruby-keyword kw">true</span>)
+          <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">open</span>(<span class="ruby-identifier">base_url</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">request_url</span>, <span class="ruby-value str">&quot;Authorization&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;Basic &quot;</span> <span class="ruby-operator">&lt;&lt;</span>
+                      <span class="ruby-constant">Base64</span>.<span class="ruby-identifier">encode64</span>(<span class="ruby-node">&quot;#{@username}:#{@password}&quot;</span>)).<span class="ruby-identifier">read</span>
+        <span class="ruby-keyword kw">else</span>
+          <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">open</span>(<span class="ruby-identifier">base_url</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">request_url</span>).<span class="ruby-identifier">read</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">TimeoutError</span>
+      <span class="ruby-identifier">puts</span> <span class="ruby-value str">&quot;ERROR: Timeout error while communicating with Twitter&quot;</span>
+      <span class="ruby-identifier">exit</span>
+    <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">Exception</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">ex</span>
+      <span class="ruby-identifier">puts</span> <span class="ruby-value str">&quot;ERROR: Exception while communicating with Twitter&quot;</span>
+      <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;#{ex.class} #{ex.message} #{ex.backtrace}&quot;</span>
+      <span class="ruby-identifier">exit</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

@@ -1,0 +1,11 @@
+.DS_Store
+*~
+*.sw?
+tmp/**/*
+tmp/*
+script/**/*
+script/*
+*.log
+*.pid
+*.tmproj
+*.cache
