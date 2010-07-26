@@ -9,3 +9,6 @@ script/*
 *.pid
 *.tmproj
 *.cache
+pkg
+doc
+Manifest
