@@ -60,7 +60,7 @@ Requires the json gem
 
 == INSTALL:
 
-sudo gem install
+cd in to project and type 'rake install'
 
 == LICENSE:
 
