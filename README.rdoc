@@ -60,7 +60,7 @@ Requires the json gem
 
 == INSTALL:
 
-cd in to project directory and type 'rake install'
+gem build tweet_checker.gemspec
 
 == LICENSE:
 

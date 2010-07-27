@@ -5,6 +5,8 @@ require 'json'
 
 
 module Checker
+  VERSION = "0.1.0" unless defined?(::Bundler::VERSION)
+
   def self.included(base)
     base.extend ClassMethods
   end
